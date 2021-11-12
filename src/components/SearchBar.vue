@@ -5,11 +5,17 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   name: "SearchBar",
   methods: {
+    ...mapActions([
+      'onTermChange'
+    ]),
     onInput: function(event) {
-      this.$emit("termChange", event.target.value);
+      this.onTermChange(event.target.value);
+      // this.$emit("termChange", event.target.value);
     }
   }
 };

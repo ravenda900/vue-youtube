@@ -8,6 +8,8 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
+
 export default {
   name: "VideoListItem",
   props: ["video"],
@@ -17,8 +19,11 @@ export default {
     }
   },
   methods: {
+    ...mapMutations([
+      'SET_SELECTED_VIDEO'
+    ]),
     onVideoSelect() {
-      this.$emit("videoSelect", this.video);
+      this.SET_SELECTED_VIDEO(this.video);
     }
   }
 };
